@@ -110,24 +110,22 @@ void mapMItoMIMAT(std::string input, std::vector <std::pair<std::string, std::st
 void line_by_species(std::string input_file, std::string output_file){
   
 	int flag = 0;
-	int counter = 1;
         std::ifstream input;
 	std::ofstream output;
         input.open(input_file.c_str());
  	output.open(output_file.c_str());
 	
  	for( std::string line; getline( input, line ); )
-           {
+        {
 	  if (line.find('>'+species) != std::string::npos) {
 	    output << line << "\n";
 	    flag = 1;
 	  }
-	    if(counter % 2 == 0 && flag == 1){ //Sequence line
-	      output << line << "\n";
-	      flag = 0;
-	    }
-	  counter++;
-	   }
+	  if(line.find('>'+species) == std::string::npos && flag == 1){ //Sequence line
+	    output << line << "\n";
+	    flag = 0;
+	  }
+	}
         output.close();
   
 }
