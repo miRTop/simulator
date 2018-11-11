@@ -68,6 +68,7 @@ std::vector<std::pair<std::string, std::string>> sequenceModification(int option
 		  alphabet = line.substr(found-five_prime_modification.max_nts, five_prime_modification.max_nts);
 		else if(found != 0)
 		  alphabet = line.substr(0, found);
+		reverseStr(alphabet);
 		fivePrimeAddition(sequence, alphabet);
 		storeSequences(modified_sequences, sequences);
 		modified_sequences.clear();
